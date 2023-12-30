@@ -5,6 +5,8 @@ from django.shortcuts import render, get_object_or_404
 from .forms import PostForm, CommentForm
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
+from .models import Memo             # Memo をインポート
+from .models import Todo             # Todo をインポート
 
 # Create your views here.
 
@@ -89,3 +91,19 @@ def comment_remove(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
     comment.delete()
     return redirect('post_detail', pk=comment.post.pk)
+    
+# Create your memo views here.
+
+def memo_list(request):
+    memos = Memo.objects.all()
+
+    context = {'memos': memos}
+    return render(request, 'memo/memo_list.html', context)
+    
+# Create your Todo views here.
+
+def Todo_list(request):
+    todos = Todo.objects.all()
+
+    context = {'todos': todos}
+    return render(request, 'todo/todo_list.html', context)

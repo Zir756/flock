@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memo</title>
+</head>
+
+<style>
+    .app-name {
+        text-align: center;
+    }
+    .contents {
+        margin-left: 300px;
+        margin-right: 300px;
+    }
+</style>
+
+
+<div class='app-name'>
+    <h1><a href="">ぼく・わたしのメモ</a></h1>
+</div>
+
+<!-- メモの内容 -->
+{% for memo in memos %}
+<div class='contents'>
+    <hr>
+    <h2>タイトル : {{ memo.title }}</h2>
+    <p>作成日 : {{ memo.created_date }}</p>
+    <p>{{ memo.text | linebreaks }}</p>
+</div>
+{% endfor %}
+</html>

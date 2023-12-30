@@ -34,3 +34,21 @@ class Comment(models.Model):
         
 def approved_comments(self):
     return self.comments.filter(approved_comment=True)
+    
+# Create memo models here.
+
+class Memo(models.Model):
+    title = models.CharField(verbose_name='タイトル', max_length=200)
+    text = models.TextField(verbose_name='内容')
+    created_date = models.DateTimeField(verbose_name='作成日', auto_now_add=True)
+
+    def __str__(self):
+        return self.title
+        
+# Create todo models here.
+class Todo(models.Model):
+    title = models.CharField(max_length=20)
+    created_at = models.DateTimeField(default=timezone.now)
+
+    def __str__(self):
+        return self.title
